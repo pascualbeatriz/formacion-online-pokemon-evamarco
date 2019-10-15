@@ -22,3 +22,27 @@ Hice un primer fetch y consolee el resultado para poder ver la estructura de los
 Así que hice un bucle dentro del primer fetch para que me recorriera todos los elememtos que me devolvian y en cada uno de ellos hacer un segundo fetch para obtener la información que me solicitan. 
 
 Una vez llegué hasta aquí, cree un objeto con toda los datos de cada pokemon y los metí en el estado para poder acceder a ellos de forma más fácil. 
+
+### Pintar los datos en pantalla
+
+Una vez con los datos en el estado pasé a pintarlos en pantalla de manera sencilla.
+Creé una lista desordenada y dentro hice un map para recorrer el array que tengo guardado en el estado. 
+Por cada item del array saqué el nombre, la imagen y el listado de tipos, que para poder pintarlos tuve que hacer otro map. 
+
+### Dividir el problema en componentes
+
+Ahora que ya se veía la info que me pedían en pantalla voy a dividir el trabajo en componentes para que sea más facil de reutlizar.
+
+He creado dos componentes:
+  - Card -> Con la info de cada uno de los pokemon.
+  - List -> Donde hago el map de los elementos del estado. 
+
+### Crear el filtro
+
+He creado un componente Filters para poder tener todos los filtros que queramos hacer en un mismo sitio. 
+Aquí introduje un input tipo texto con su label. 
+El valor introducido se guarda en el estado y se usa para filtrar el array de resultados. 
+
+### Dar estilos
+
+Ahora que el listado se pinta correctamente y el filtro funciona vamos a dar estilos. 
