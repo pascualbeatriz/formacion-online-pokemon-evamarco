@@ -1,0 +1,25 @@
+.poke__list{
+  display: grid;
+  grid-gap: 15px; 
+  max-width: 275px;
+
+  margin: 0 auto; 
+  @media(min-width: 480px){
+    grid-template-columns: 1fr 1fr;
+    max-width: 451px; 
+  }
+  @media(min-width: 714px){
+    grid-template-columns: 1fr 1fr 1fr; 
+    max-width: 684px;
+  }
+  @media(min-width: 950px){
+    grid-template-columns: 1fr 1fr 1fr 1fr; 
+    max-width: 920px;
+  }
+}
+.poke__item{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+} 

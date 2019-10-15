@@ -12,7 +12,7 @@ const Filters = props => {
         name="text" 
         id="text" 
         className="input" 
-        placeholder = "Ej. Bulbasur"
+        placeholder = "Ej. Bulbasaur"
         onChange = {getInputValue}
       />
     </React.Fragment>

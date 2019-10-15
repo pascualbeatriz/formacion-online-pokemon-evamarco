@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Card from './Card';
+import './List.scss'; 
 
 const List = props => {
   const {api, query} = props;
@@ -10,9 +11,11 @@ const List = props => {
       .filter(item => {
         return item.name.toUpperCase().includes(query.toUpperCase())
       })
-    .map(item => {return(
-      <Card item = {item} />
-    )})}
+      .map(item => {return(
+        <li  key={item.id} className = "poke__item" >
+          <Card item = {item} />
+        </li>
+      )})}
   </ul>
   );
 }

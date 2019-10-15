@@ -2,6 +2,7 @@ import React from 'react';
 import {FetchChar} from '../services/fetch';
 import List from './List'; 
 import Filters from './Filters'; 
+import './App.scss'; 
 
 class App extends React.Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class App extends React.Component {
   }
   getCharacter(){
     FetchChar()
-    .then(data=> {console.log(data.results)
+    .then(data=> {
       for(let item of data.results){
         const index = data.results.indexOf(item);
         fetch(item.url)
@@ -50,8 +51,11 @@ class App extends React.Component {
     const {getInputValue} = this
     return (
       <div className="App">
+        <header className =" app__header">
+
         <h1 className="app__title">Pokedesk</h1>
         <Filters  getInputValue = {getInputValue}/>
+        </header>
         <List api = {api}  query ={query}/>
       </div>
     );
