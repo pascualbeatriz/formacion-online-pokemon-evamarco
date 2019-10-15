@@ -52,9 +52,8 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className =" app__header">
-
-        <h1 className="app__title">Pokedesk</h1>
-        <Filters  getInputValue = {getInputValue} query ={query}/>
+          <h1 className="app__title">Pokedesk</h1>
+          <Filters  getInputValue = {getInputValue} query ={query}/>
         </header>
         <List api = {api}  query ={query}/>
       </div>

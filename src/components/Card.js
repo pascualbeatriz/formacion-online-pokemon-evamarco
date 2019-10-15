@@ -18,9 +18,8 @@ const Card = props => {
                   {type}
                 </li>
               )})}
-          </ul>
+            </ul>
           </div>
-
         </div>
   );
 }

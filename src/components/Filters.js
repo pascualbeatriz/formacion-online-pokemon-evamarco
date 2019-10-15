@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Filters.scss';
 
-
 const Filters = props => {
   const {getInputValue, query} = props;
   return(
@@ -18,7 +17,6 @@ const Filters = props => {
         value = {query}
       />
     </React.Fragment>
-
   );
 }
 Filters.propTypes = {
