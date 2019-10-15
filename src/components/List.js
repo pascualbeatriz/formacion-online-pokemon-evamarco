@@ -20,6 +20,7 @@ const List = props => {
   );
 }
 List.propTypes = {
-  api: PropTypes.arrayOf(PropTypes.object).isRequired
+  api: PropTypes.arrayOf(PropTypes.object).isRequired,
+  query: PropTypes.string.isRequired
 }
 export default List;

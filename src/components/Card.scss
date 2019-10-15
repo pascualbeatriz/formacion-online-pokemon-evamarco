@@ -19,7 +19,6 @@
 .card__image{
   object-fit: cover;
   height: 100%;
-
 }
 .card__info{
   background-color: white;
@@ -29,6 +28,11 @@
   width: 100%;
   height: 100px;
   padding: 10px; 
+  position: relative;
+}
+.poke__name{
+  text-transform: capitalize; 
+  font-weight: normal; 
 }
 .type__list{
   display: flex; 
@@ -42,4 +46,15 @@
   border-radius: 3px; 
   padding: 3px; 
   margin-right:  15px; 
+  font-size: 13px; 
+}
+.id__number{
+  font-size: 12px; 
+  text-transform: uppercase; 
+  position: absolute; 
+  top: -25px; 
+  left: 0px; 
+  padding: 5px;
+  background-color: rgb(161, 161, 161);
+
 }

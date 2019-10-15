@@ -46,3 +46,4 @@ El valor introducido se guarda en el estado y se usa para filtrar el array de re
 ### Dar estilos
 
 Ahora que el listado se pinta correctamente y el filtro funciona vamos a dar estilos. 
+Hemos usado tanto flexbox como grid.

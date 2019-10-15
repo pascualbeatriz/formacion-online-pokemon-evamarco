@@ -3,9 +3,20 @@
   flex-direction: column; 
   justify-content: center; 
   align-items: center; 
-
+  margin-bottom: 20px;
 }
 .App{
-  background-color: #1FB39C;
+  background-image: linear-gradient(to bottom right, #FF7A7B,#1FB39C);
   min-height: 100vh; 
+}
+.app__title{
+  background-image: url('../assets/images/pokemon.png');
+  background-position: center;
+  background-size: contain; 
+  background-repeat: no-repeat; 
+  height: 1px;
+  overflow: hidden;
+  padding-top: 100px; 
+  width: 600px; 
+  margin: 20px; 
 }

@@ -10,11 +10,11 @@ const Card = props => {
             <img className = "card__image"src = {item.image} alt = {item.name}/>
           </div>
           <div className="card__info">
+            <p className="id__number"> Id / {item.id}</p>
             <h2 className = "poke__name">{item.name}</h2>
             <ul className = "type__list">
               {item.typeList.map((type, index) => {return(
                 <li className = "type__item" key = {`a${index}`}>
-                  
                   {type}
                 </li>
               )})}
