@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PokemonDetail from '../PokemonDetail/PokemonDetail';
 import './PokemonList.scss'; 
+import {Link} from 'react-router-dom';
+
 
 const PokemonList = props => {
   const {pokemons, InputNameValue, pokemonsEvo} = props;
@@ -15,7 +17,9 @@ const PokemonList = props => {
     { pokemonFiltered
       .map(item => {return(
         <li  key={item.id} className = "poke__item" >
-          <PokemonDetail item = {item} pokemonsEvo = {pokemonsEvo}/>
+          <Link to = {`/character/${item.id}`}>
+            <PokemonDetail item = {item} pokemonsEvo = {pokemonsEvo}/>
+          </Link>
         </li>
       )})}
   </ul>

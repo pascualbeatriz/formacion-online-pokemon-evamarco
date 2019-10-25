@@ -1,10 +1,10 @@
 import React from 'react';
-import {FetchPokemons} from '../../services/fetchPokemons';
-import {FetchEvolution} from '../../services/fetchEvolutions';
-import PokemonList from '../PokemonList/PokemonList'; 
-import Filters from '../PokemonFilters/PokemonFilters'; 
+import PokemonService from '../../services/PokemonService';
+import Home from '../Home/Home';
+import Filters from '../PokemonFilters/PokemonFilters';
+import PokemonBigDetail from '../PokemonBigDetail/PokemonBigDetail';
 import {Route, Switch} from 'react-router-dom';
-import './App.scss'; 
+import './App.scss';
 
 class App extends React.Component {
   constructor(props) {
@@ -14,79 +14,42 @@ class App extends React.Component {
       pokemonsEvo:[],
       InputNameValue: ''
     }
-    this.getInputValue = this.getInputValue.bind(this); 
+    this.pokemonService = new PokemonService();
+    this.getInputValue = this.getInputValue.bind(this);
   }
   componentDidMount(){
     this.getPokemons();
     this.getEvolutions();
   }
+  componentWillUnmount(){
+    this.abortController.abort()
+  }
   getInputValue(event){
-    const inputValue = event.currentTarget.value; 
+    const inputValue = event.currentTarget.value;
     this.setState({InputNameValue: inputValue})
   }
   getPokemons(){
-    FetchPokemons()
+    this.pokemonService.findAllPokemons()
     .then(data=> {
       for(let item of data.results){
-        fetch(item.url)
-        .then(response => response.json())
+        this.pokemonService.findPokemon(item)
         .then(pokemon => {
-          const Types = [];
-          for(let type of pokemon.types){
-            Types.push(type.type.name);
-            }
-          const poke = {
-            name: pokemon.name,
-            image : pokemon.sprites.front_default,
-            Types : Types,
-            id : pokemon.id       
-          }
-          this.setState( { 
-            pokemons: [...this.state.pokemons, poke]
+          this.setState( {
+            pokemons: [...this.state.pokemons, pokemon]
           })
         })
       }
     })
   }
   getEvolutions(){
-    FetchEvolution()
+    this.pokemonService.findAllEvolutions()
     .then(data=> {
       for(let item of data.results){
-        fetch(item.url)
-        .then(response => response.json())
+        this.pokemonService.findEvolutions(item)
         .then(pokemon => {
-          if(pokemon.chain.evolves_to[0] === undefined){
-            const pokeEvolution = {
-              name: pokemon.chain.species.name,
-              id: pokemon.id,
-              firstEv : '',
-            }
-            this.setState( { 
-              pokemonsEvo: [...this.state.pokemonsEvo, pokeEvolution]
-            })      
-          }
-          else if(pokemon.chain.evolves_to[0].evolves_to[0] !== undefined){
-            const pokeEvolution = {
-              name: pokemon.chain.species.name,
-              id: pokemon.id,
-              firstEv : pokemon.chain.evolves_to[0].species.name,
-              secondEv :pokemon.chain.evolves_to[0].evolves_to[0].species.name
-            }
-            this.setState( { 
-              pokemonsEvo: [...this.state.pokemonsEvo, pokeEvolution]
-            })
-          }
-          else{
-            const pokeEvolution = {
-              name: pokemon.chain.species.name,
-              id: pokemon.id,
-              firstEv : pokemon.chain.evolves_to[0].species.name,
-       
-            }
-            this.setState( { 
-              pokemonsEvo: [...this.state.pokemonsEvo, pokeEvolution]
-            })
-          }
+          this.setState( {
+            pokemonsEvo: [...this.state.pokemonsEvo, pokemon]
+          })
         })
       }
     })
@@ -101,11 +64,39 @@ class App extends React.Component {
           <h1 className = "app__title">Pokedesk</h1>
           <Filters  getInputValue = {getInputValue} InputNameValue = {InputNameValue}/>
         </header>
-        <PokemonList pokemons = {pokemons}  pokemonsEvo = {pokemonsEvo}InputNameValue = {InputNameValue}/>
+        <Switch>
+            <Route 
+              exact path = '/' 
+              render = {
+                () => {
+                  return (
+                    <Home 
+                      pokemons = {pokemons}  
+                      pokemonsEvo = {pokemonsEvo}
+                      InputNameValue = {InputNameValue}
+                    />
+                  )
+                }
+              }
+            />
+            <Route 
+              path = '/character/:charId'
+              render = {
+                (routerProps) => {
+                  return (
+                    <PokemonBigDetail 
+                      pokemons = {pokemons} 
+                      pokemonsEvo = {pokemonsEvo}
+                      routerProps = {routerProps}
+                    />
+                  )
+                }
+              }
+            />
+          </Switch>
       </div>
     );
-  }
+ }
 }
-
 
 export default App;

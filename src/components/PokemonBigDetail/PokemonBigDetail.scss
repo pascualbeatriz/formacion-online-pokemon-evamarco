@@ -1,0 +1,130 @@
+
+@mixin center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+@mixin bg{
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+@mixin hiddenTitle{
+  padding-top: 100px;
+  height: 1px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: contain; 
+}
+
+$bright-green:  rgb(67, 204, 32);
+$semi-blue:rgba(8, 205, 235, 0.404);
+$semi-white: rgba(255, 255, 255, 0.705);
+$black: black;
+$white: white; 
+$info-text-color: $bright-green;
+$primary-font: 'Mansalva', cursive;
+
+.detail__wrapper{
+  @include center; 
+
+}
+.detail__info{
+  width: 300px; 
+  background-color: $semi-blue; 
+  color: $bright-green; 
+  padding: 10px;
+  font-size: 16px; 
+}
+
+.link__anchor{
+  text-decoration: none; 
+  color: $bright-green; 
+  margin: 15px; 
+  position: relative;
+  width: 35px;
+  height: 35px; 
+  border-radius: 50%;
+  background-color: $semi-blue;
+  &:hover{
+    color: $semi-blue;  
+    background-color: $bright-green;
+  }
+  &::before{
+    position: absolute; 
+    top: 48%; 
+    left: 45%; 
+    transform: translate(-50%, -50%);
+    content:'\f053';
+    font-family: "Font Awesome 5 Pro";
+    font-weight: 900;
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .detail__wrapper{
+    min-height: 80vh; 
+    flex-direction: row; 
+    .img{
+      border-radius: 0px; 
+      margin: 0;
+      width: 350px;
+      height: 350px;  
+    } 
+    .detail__info{
+      width: 350px;
+      height: 350px; 
+      background-color: $semi-blue; 
+      color: $bright-green; 
+      padding: 15px;
+      font-size: 18px; 
+    }
+    .detail__img{
+      height: 350px;
+      width: 350px;    
+    }
+  }
+  .link__anchor{
+    margin: 20px; 
+    width: 45px;
+    height: 45px; 
+    &::before{
+      top: 48%; 
+      left: 45%; 
+      transform: translate(-50%, -50%);
+      font-size: 30px;
+    }
+  }
+}
+@media (min-width: 1024px) {
+  .detail__wrapper{ 
+    .img{
+      width: 400px;
+      height: 400px;  
+    } 
+    .detail__info{
+      width: 400px;
+      height: 400px; 
+      font-size: 20px; 
+    }
+    .detail__img{
+      height: 400px;
+      width: 400px;    
+    }
+  }
+  .link__anchor{
+    margin: 20px;
+  }
+}
+.app__back{
+  color: $bright-green; 
+  text-decoration: underline; 
+}
+.noData{
+  color: $bright-green; 
+  text-transform: uppercase; 
+  margin: 20px auto; 
+}
