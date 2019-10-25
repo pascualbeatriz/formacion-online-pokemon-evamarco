@@ -47,3 +47,11 @@ El valor introducido se guarda en el estado y se usa para filtrar el array de re
 
 Ahora que el listado se pinta correctamente y el filtro funciona vamos a dar estilos. 
 Hemos usado tanto flexbox como grid.
+
+## Pasos para poder trabajar sobre este proyecto. 
+
+Para poder trabajar sobre este proyecto los pasos a seguir son: 
+  - Clonar o descargar el repositorio desde la página de github: https://github.com/Adalab/formacion-online-pokemon-evamarco
+  - Una vez creada la carpeta y clonado debemos ejecutar __ npm install __ para que se nos intalen las librerías necesarias para poder ver el contenido. 
+  - Una vez las dependencias estén instaladas, si queremos ver el código en pantalla usaremos __ npm start __
+  A partir de aquí ya podremos trabajar sobre el código y ver las modificaciones en tiempo real en el navegador. 

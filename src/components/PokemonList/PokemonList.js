@@ -3,24 +3,26 @@ import PropTypes from 'prop-types';
 import PokemonDetail from '../PokemonDetail/PokemonDetail';
 import './PokemonList.scss'; 
 
-const List = props => {
-  const {pokemons, InputNameValue} = props;
+const PokemonList = props => {
+  const {pokemons, InputNameValue, pokemonsEvo} = props;
+  const pokemonFiltered = pokemons
+  .filter(item => {
+    return item.name.toUpperCase().includes(InputNameValue.toUpperCase())
+  })
+  .slice(0, 25)
   return(
     <ul className="poke__list">
-    {pokemons
-      .filter(item => {
-        return item.name.toUpperCase().includes(InputNameValue.toUpperCase())
-      })
+    { pokemonFiltered
       .map(item => {return(
         <li  key={item.id} className = "poke__item" >
-          <PokemonDetail item = {item} />
+          <PokemonDetail item = {item} pokemonsEvo = {pokemonsEvo}/>
         </li>
       )})}
   </ul>
   );
 }
-List.propTypes = {
+PokemonList.propTypes = {
   pokemons: PropTypes.arrayOf(PropTypes.object).isRequired,
   InputNameValue: PropTypes.string.isRequired
 }
-export default List;
+export default PokemonList;

@@ -56,3 +56,22 @@
   padding: 5px;
   background-color: rgb(161, 161, 161);
 }
+.evo__list{
+  padding: 5px 0; 
+  list-style: none;
+  display: flex; 
+  justify-content: space-between;
+  font-size: 12px;
+}
+.evo__text{
+  padding: 3px;
+}
+.same__name{
+  border: 1px solid pink;
+  border-radius: 5px;
+  background-color: pink;
+}
+h3{
+  padding-top: 5px; 
+  font-size: 15px;
+}

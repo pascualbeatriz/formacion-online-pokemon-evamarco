@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App/App';
+import {HashRouter} from 'react-router-dom';
 import './index.scss'; 
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<HashRouter><App /></HashRouter>, document.getElementById('root'));
 

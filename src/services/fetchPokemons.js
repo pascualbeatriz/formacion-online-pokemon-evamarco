@@ -1,11 +1,11 @@
 
 const ENDPOINT = 'https://pokeapi.co/api/v2/pokemon/?limit=250'
 
-const FetchChar = () => {
+const FetchPokemons = () => {
   return(
     fetch(ENDPOINT)
       .then(response => response.json())
   )
 }
 
-export {FetchChar}; 
+export {FetchPokemons}; 
