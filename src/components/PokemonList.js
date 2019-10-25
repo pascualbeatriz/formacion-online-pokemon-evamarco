@@ -6,12 +6,12 @@ import './PokemonList.scss';
 const PokemonList = props => {
   const {pokemons, InputNameSearch, pokemonEvolutions} = props;
   // const pokemonFiltered = pokemons.filter(item => {
-  //   return item.PokemonName.toUpperCase().includes(InputNameSearch.toUpperCase())
+  //   return item.PokeName.toUpperCase().includes(InputNameSearch.toUpperCase())
   // })
   return(
     <ul className="poke__list">
-    {pokemons
-      .map((item, index)=> {
+      {pokemons
+        .map((item, index)=> {
           return(
             <li  key={index} className = "poke__item" >
               <PokemonDetail 
@@ -20,9 +20,9 @@ const PokemonList = props => {
               />
             </li>
           ) 
-      }
-      )}
-  </ul>
+        }
+        )}
+    </ul>
   );
 }
 PokemonList.propTypes = {
