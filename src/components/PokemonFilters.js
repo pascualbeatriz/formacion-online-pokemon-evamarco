@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Filters.scss';
+import './PokemonFilters.scss';
 
 const Filters = props => {
-  const {getInputValue, query} = props;
+  const {getInputValue, InputNameSearch} = props;
   return(
     <React.Fragment>
       <label className = "filter__label" htmlFor="text">Introduce un nombre</label>
@@ -14,13 +14,13 @@ const Filters = props => {
         className="input" 
         placeholder = "Ej. Bulbasaur"
         onChange = {getInputValue}
-        value = {query}
+        value = {InputNameSearch}
       />
     </React.Fragment>
   );
 }
 Filters.propTypes = {
   getInputValue: PropTypes.func.isRequired,
-  query: PropTypes.string.isRequired
+  InputNameSearch: PropTypes.string.isRequired
 }
 export default Filters;
