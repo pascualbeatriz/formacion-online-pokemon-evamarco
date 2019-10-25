@@ -8,7 +8,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state={
-      api:[],
+      pokemons:[],
       query: ''
     }
     this.getInputValue = this.getInputValue.bind(this); 
@@ -24,7 +24,6 @@ class App extends React.Component {
     FetchChar()
     .then(data=> {
       for(let item of data.results){
-        const index = data.results.indexOf(item);
         fetch(item.url)
         .then(response => response.json())
         .then(pokemon => {
@@ -36,18 +35,17 @@ class App extends React.Component {
             name: pokemon.name,
             image : pokemon.sprites.front_default,
             typeList : typesArray,
-            id : index, 
-            
+            id : pokemon.id       
           }
           this.setState( { 
-            api: [...this.state.api, poke]
+            pokemons: [...this.state.pokemons, poke]
           })
         })
       }
     })
   }
   render() {
-    const {api, query} = this.state;
+    const {pokemons, query} = this.state;
     const {getInputValue} = this
     return (
       <div className="App">
@@ -55,7 +53,7 @@ class App extends React.Component {
           <h1 className="app__title">Pokedesk</h1>
           <Filters  getInputValue = {getInputValue} query ={query}/>
         </header>
-        <List api = {api}  query ={query}/>
+        <List pokemons = {pokemons}  query ={query}/>
       </div>
     );
   }
