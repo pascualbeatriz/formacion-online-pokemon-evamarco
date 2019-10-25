@@ -1,7 +1,7 @@
 import React from 'react';
-import {FetchChar} from '../services/fetch';
-import List from './List'; 
-import Filters from './Filters'; 
+import {FetchChar} from '../../services/fetchPokemons';
+import PokemonList from '../PokemonList/PokemonList'; 
+import Filters from '../PokemonFilters/PokemonFilters'; 
 import './App.scss'; 
 
 class App extends React.Component {
@@ -9,7 +9,7 @@ class App extends React.Component {
     super(props);
     this.state={
       pokemons:[],
-      query: ''
+      InputNameValue: ''
     }
     this.getInputValue = this.getInputValue.bind(this); 
   }
@@ -18,7 +18,7 @@ class App extends React.Component {
   }
   getInputValue(event){
     const inputValue = event.currentTarget.value; 
-    this.setState({query: inputValue})
+    this.setState({InputNameValue: inputValue})
   }
   getCharacter(){
     FetchChar()
@@ -45,15 +45,15 @@ class App extends React.Component {
     })
   }
   render() {
-    const {pokemons, query} = this.state;
+    const {pokemons, InputNameValue} = this.state;
     const {getInputValue} = this
     return (
-      <div className="App">
-        <header className =" app__header">
-          <h1 className="app__title">Pokedesk</h1>
-          <Filters  getInputValue = {getInputValue} query ={query}/>
+      <div className = "App">
+        <header className = " app__header">
+          <h1 className = "app__title">Pokedesk</h1>
+          <Filters  getInputValue = {getInputValue} InputNameValue = {InputNameValue}/>
         </header>
-        <List pokemons = {pokemons}  query ={query}/>
+        <PokemonList pokemons = {pokemons}  InputNameValue = {InputNameValue}/>
       </div>
     );
   }

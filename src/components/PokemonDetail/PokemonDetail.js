@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Card.scss';
+import './PokemonDetail.scss';
 
 const Card = props => {
   const {item} = props;

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './Filters.scss';
 
 const Filters = props => {
-  const {getInputValue, query} = props;
+  const {getInputValue, InputNameValue} = props;
   return(
     <React.Fragment>
       <label className = "filter__label" htmlFor="text">Introduce un nombre</label>
@@ -14,13 +14,13 @@ const Filters = props => {
         className="input" 
         placeholder = "Ej. Bulbasaur"
         onChange = {getInputValue}
-        value = {query}
+        value = {InputNameValue}
       />
     </React.Fragment>
   );
 }
 Filters.propTypes = {
   getInputValue: PropTypes.func.isRequired,
-  query: PropTypes.string.isRequired
+  InputNameValue: PropTypes.string.isRequired
 }
 export default Filters;
