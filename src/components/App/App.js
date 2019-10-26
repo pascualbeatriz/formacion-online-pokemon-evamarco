@@ -20,12 +20,26 @@ class App extends React.Component {
   componentDidMount(){
     this.getPokemons();
     this.getEvolutions();
+    this.getInitialState();
   }
-  componentWillUnmount(){
-    this.abortController.abort()
+
+  getInitialState() {
+    const inputValueSaved =  JSON.parse(localStorage.getItem('inputValue'));
+    const pokemonsSaved =  JSON.parse(localStorage.getItem('pokemons'));
+    const pokemonsEvoSaved =  JSON.parse(localStorage.getItem('pokemonsEvo'));
+    if(inputValueSaved){
+      this.setState({InputNameValue: inputValueSaved})
+    }
+    if(pokemonsSaved){
+      this.setState({pokemons: pokemonsSaved})
+    }
+    if(pokemonsEvoSaved){
+      this.setState({pokemonsEvo: pokemonsEvoSaved})
+    }
   }
   getInputValue(event){
     const inputValue = event.currentTarget.value;
+    localStorage.setItem('inputValue', JSON.stringify(inputValue));
     this.setState({InputNameValue: inputValue})
   }
   getPokemons(){
@@ -37,6 +51,7 @@ class App extends React.Component {
           this.setState( {
             pokemons: [...this.state.pokemons, pokemon]
           })
+          localStorage.setItem('pokemons', JSON.stringify(this.state.pokemons));
         })
       }
     })
@@ -50,6 +65,7 @@ class App extends React.Component {
           this.setState( {
             pokemonsEvo: [...this.state.pokemonsEvo, pokemon]
           })
+          localStorage.setItem('pokemonsEvo', JSON.stringify(this.state.pokemonsEvo));
         })
       }
     })
