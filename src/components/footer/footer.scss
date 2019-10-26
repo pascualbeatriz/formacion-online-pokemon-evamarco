@@ -1,0 +1,39 @@
+.list__pages{
+  margin-top: 40px; 
+  padding: 20px; 
+  display: flex;
+  justify-content: space-between; 
+  border: 1px solid lightgray; 
+}
+.list__page{
+  text-align: center; 
+}
+.prevPage__btn{
+  cursor: pointer; 
+  background-color: #0d81ce;
+  width: 30px; 
+  height: 30px;
+  border-radius: 50%;
+  color: white;
+  font-size: 22px; 
+  &:hover{
+    color: #0d81ce;
+    border: 2px solid #0d81ce;
+    background-color: white;
+  }
+}
+.nextPage__btn{
+  cursor: pointer; 
+  background-color: #0d81ce;
+  width: 30px; 
+  height: 30px;
+  border-radius: 50%;
+  color: white;
+  font-size: 22px; 
+  &:hover{
+    cursor: pointer;
+    color: #0d81ce;
+    border: 2px solid #0d81ce;
+    background-color: white;
+  }
+}

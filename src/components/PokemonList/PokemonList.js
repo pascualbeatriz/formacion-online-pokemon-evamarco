@@ -6,14 +6,14 @@ import {Link} from 'react-router-dom';
 
 
 const PokemonList = props => {
-  const {pokemons, InputNameValue, pokemonsEvo} = props;
+  const {pokemons, InputNameValue, pokemonsEvo, init, end} = props;
   let pokemonFiltered = pokemons;
   if(InputNameValue !== null)
     {pokemonFiltered = pokemons
     .filter(item => {
       return item.name.toUpperCase().includes(InputNameValue.toUpperCase())
     })
-    .slice(0, 25)
+    .slice(init, end)
   }
   else{
     // pokemonFiltered = pokemons.slice(0, 25); 
@@ -35,6 +35,9 @@ const PokemonList = props => {
 }
 PokemonList.propTypes = {
   pokemons: PropTypes.arrayOf(PropTypes.object).isRequired,
-  InputNameValue: PropTypes.string.isRequired
+  InputNameValue: PropTypes.string.isRequired,
+  pokemonsEvo: PropTypes.arrayOf(PropTypes.object).isRequired, 
+  init: PropTypes.number.isRequired, 
+  end: PropTypes.number.isRequired, 
 }
 export default PokemonList;

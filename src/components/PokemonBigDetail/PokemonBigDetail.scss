@@ -1,4 +1,3 @@
-
 $blue:  rgb(32, 135, 204);
 $yellow:rgba(252, 248, 26, 0.719);
 $semi-white: rgba(229, 208, 253, 0.705);
@@ -18,7 +17,6 @@ $primary-font: 'Mansalva', cursive;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
   width: 90%;
 }
 .bigImage__wrapper{
@@ -35,7 +33,7 @@ $primary-font: 'Mansalva', cursive;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding-top: 20px;
   width: 90%;
 }
 .moreImages__list{
@@ -55,11 +53,14 @@ $primary-font: 'Mansalva', cursive;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding-top: 20px;
   width: 90%;
 }
 .type__list{
   padding-top: 20px;
+}
+.type__text{
+  margin: 0 auto; 
 }
 .poke__subtitle{
   font-size: 18px;
@@ -90,7 +91,33 @@ $primary-font: 'Mansalva', cursive;
     font-size: 20px;
   }
 }
-
+.type__item_detail{
+  margin: 10px; 
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  padding: 3px;
+}
+.icon__type{
+ display:none; 
+}
+.evolution__group{
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  width: 90%;
+}
+.detail__evo__list{
+  margin: 10px; 
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+}
+.second__group{
+  display:grid;
+}
 @media (min-width: 768px) {
   .info__group{ 
     flex-direction: row;
@@ -119,6 +146,17 @@ $primary-font: 'Mansalva', cursive;
       font-size: 30px;
     }
   }
+  .icon__type{
+    display: block;
+    width: 100px;
+    height: 100px;
+  }
+  .detail__evo__list{
+    flex-direction: row;
+  }
+  .second__group{
+   grid-template-columns: 1fr 1fr;
+  }
 }
 @media (min-width: 1024px) {
 
@@ -135,13 +173,21 @@ $primary-font: 'Mansalva', cursive;
   .types__group{
     align-items: flex-start;
   }
-  .type__item{
-    width: 200px;
-    height: 200px;
+  .type__item_detail{
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+  .icon__type{
+    width: 100px;
+    height: 100px;
+  }
+  .evolution__group{
+    align-items: flex-start;
+  }
+  .detail__evo__list{
+    padding-top:20px;
   }
 }
 

@@ -3,34 +3,51 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './PokemonBigDetail.scss'; 
 
-function toggleFrontBack(){
-  setInterval(() => {
-    const backImgArray = document.querySelectorAll('.pokemon__img__back');
-    for (let backPokemon of backImgArray) {
-      backPokemon.classList.toggle('hidden')
-    }
-    const frontImgArray = document.querySelectorAll('.pokemon__img__front');
-    for(let frontPokemon of frontImgArray) {
-      frontPokemon.classList.toggle('hidden');
-    }
-   }, 1000); 
-}
 const PokemonBigDetail = props => {
   const { pokemons, pokemonsEvo, routerProps } = props;
   const id = parseInt(routerProps.match.params.charId);
   let obj = pokemons.find(element => element.id === id);
-
-  // let objEvol = {}
-  // if (pokemonsEvo.find(element => element.name === obj.name)) {
-  //   objEvol = pokemonsEvo.find(element => element.name === obj.name);
-  // }
-  // else if (pokemonsEvo.find(element => element.firstEv === obj.name)) {
-  //   objEvol = pokemonsEvo.find(element => element.firstEv === obj.name);
-  // }
-  // else {
-  //   objEvol = pokemonsEvo.find(element => element.secondEv === obj.name);
-  // }
   if(obj){
+    let objEvol = {};
+    let originName = {};
+    let firstEvolution = {};
+    let secondEvolution = {};
+    if (pokemonsEvo.find(element => element.name === obj.name)) {
+      objEvol = pokemonsEvo.find(element => element.name === obj.name);
+      originName = pokemons.find(element => element.name === objEvol.name);
+      firstEvolution = pokemons.find(element => element.name === objEvol.firstEv);
+      if(pokemons.find(element => element.name === objEvol.secondEv)){
+        secondEvolution = pokemons.find(element => element.name === objEvol.secondEv);
+      }
+      else{
+        secondEvolution = {name: '', image:''};
+      }
+    }
+    else if (pokemonsEvo.find(element => element.firstEv === obj.name)) {
+      objEvol = pokemonsEvo.find(element => element.firstEv === obj.name);
+      console.log(objEvol);
+      originName = pokemons.find(element => element.name === objEvol.name);
+      firstEvolution = pokemons.find(element => element.name === objEvol.firstEv);
+      if(pokemons.find(element => element.name === objEvol.secondEv)){
+        secondEvolution = pokemons.find(element => element.name === objEvol.secondEv);
+      }
+      else{
+        secondEvolution = {name: '', image:''};
+      }
+    }
+    else if (pokemonsEvo.find(element => element.secondEv === obj.name)){
+      objEvol = pokemonsEvo.find(element => element.secondEv === obj.name);
+      console.log(objEvol);
+      originName = pokemons.find(element => element.name === objEvol.name);
+      firstEvolution = pokemons.find(element => element.name === objEvol.firstEv);
+      secondEvolution = pokemons.find(element => element.name === objEvol.secondEv);
+    }
+    else{
+      objEvol = {};
+      originName = {name: '', image:''};
+      firstEvolution = {name: '', image:''};
+      secondEvolution = {name: '', image:''};
+    }
     let images_default = [];
     let images_shine = [];
     let images_female = [];
@@ -114,26 +131,38 @@ const PokemonBigDetail = props => {
               </li>
             </ul>
           </div>
-          <div className = "types__group">
-            <h3 className = "poke__subtitle">Tipos</h3>
-            <ul className="type__list">
-              {obj.Types.map((type, index) => {
-                return (
-                  <li className="type__item" key={`a${index}`}>
-                    {type}
-                  </li>
-                )
-              })}
+          <div className="second__group">
+            <div className = "types__group">
+              <h3 className = "poke__subtitle">Tipos</h3>
+              <ul className="type__list">
+                {obj.Types.map((type, index) => {
+                  return (
+                    <li className="type__item_detail" key={`a${index}`}>
+                      <p className = "type__text">{type}</p>
+                      <img className="icon__type" src = {require(`../../assets/images/${type}.png`)}  alt={type}/>
+                    </li>
+                  )
+                })}
+              </ul>
+              </div>
+            <div className = "evolution__group">
+            <h3 className = "poke__subtitle" >Evolutions</h3>
+            <ul className="detail__evo__list">
+              <li className="detail__evo__text">
+                <p>{originName.name}</p>
+                <img src={originName.image} alt={originName.name}/>
+              </li>
+              <li className="detail__evo__text">
+                <p>{firstEvolution.name}</p>
+                <img src={firstEvolution.image} alt={firstEvolution.name}/>
+              </li>
+              <li className="detail__evo__text">
+                <p>{secondEvolution.name}</p>
+                <img src={secondEvolution.image} alt={secondEvolution.name}/>
+              </li>
             </ul>
-            </div>
-          <div className = "evolution__group">
-          {/* <h3>Evolutions</h3>
-          <ul className="evo__list">
-            <li className="evo__text">{objEvol.name}</li>
-            <li className="evo__text">{objEvol.firstEv}</li>
-            <li className="evo__text">{objEvol.secondEv}</li>
-          </ul> */}
-        </div>
+          </div>
+          </div>
         </div>
       </React.Fragment>
     )
@@ -148,6 +177,13 @@ const PokemonBigDetail = props => {
       </React.Fragment>
     )
   }
+}
+
+PokemonBigDetail.propTypes = {
+  pokemonsEvo: PropTypes.arrayOf(PropTypes.object).isRequired,  
+  pokemons: PropTypes.arrayOf(PropTypes.object).isRequired,
+  routerProps: PropTypes.object.isRequired,
+
 }
 
 export default PokemonBigDetail;

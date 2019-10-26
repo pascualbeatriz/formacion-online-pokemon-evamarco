@@ -9,13 +9,20 @@ import './App.scss';
 class App extends React.Component {
   constructor(props) {
     super(props);
+
     this.state={
       pokemons:[],
       pokemonsEvo:[],
-      InputNameValue: ''
+      InputNameValue: '',
+      init: 0,
+      end: 25,
+      listPage: 1,
+      range: 26
     }
     this.pokemonService = new PokemonService();
     this.getInputValue = this.getInputValue.bind(this);
+    this.prevPage = this.prevPage.bind(this);
+    this.nextPage = this.nextPage.bind(this);
   }
   componentDidMount(){
     this.getPokemons();
@@ -36,6 +43,42 @@ class App extends React.Component {
     // if(pokemonsEvoSaved !== []){
     //   this.setState({pokemonsEvo: pokemonsEvoSaved})
     // }
+  }
+  prevPage(){
+    const preInit = this.state.init;
+    if(this.state.listPage > 1){
+      const newInit = preInit - this.state.range;
+      const preEnd = this.state.end;
+      const newEnd = preEnd - this.state.range;
+      const newPage = this.state.listPage - 1;
+      this.setState({
+        init: newInit, 
+        end: newEnd,
+        listPage : newPage
+      });
+    }
+    else{
+      console.log('error'); 
+    }
+  }
+  nextPage(){
+    const preEnd = this.state.end;
+    if(this.state.listPage < (this.state.pokemons.filter(item => {
+      return item.name.toUpperCase().includes(this.state.InputNameValue.toUpperCase())
+    }).length/this.state.range)){
+      const preInit = this.state.init;
+      const newInit = preInit + this.state.range;
+      const newEnd = preEnd + this.state.range;
+      const newPage = this.state.listPage + 1;
+      this.setState({
+        init: newInit, 
+        end: newEnd,
+        listPage: newPage
+      });
+    }
+    else{
+      console.log('error'); 
+    }
   }
   getInputValue(event){
     const inputValue = event.currentTarget.value;
@@ -78,8 +121,8 @@ class App extends React.Component {
   }
 
   render() {
-    const {pokemons, InputNameValue, pokemonsEvo} = this.state;
-    const {getInputValue} = this
+    const {pokemons, InputNameValue, pokemonsEvo, init, end, listPage} = this.state;
+    const {getInputValue, nextPage, prevPage} = this
     return (
       <div className = "App">
 
@@ -94,6 +137,11 @@ class App extends React.Component {
                       pokemons = {pokemons}  
                       pokemonsEvo = {pokemonsEvo}
                       InputNameValue = {InputNameValue}
+                      init = {init}
+                      end = {end}
+                      nextPage = {nextPage}
+                      prevPage = {prevPage}
+                      listPage = {listPage}
                     />
                   )
                 }
