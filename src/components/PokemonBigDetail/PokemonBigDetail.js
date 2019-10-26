@@ -20,7 +20,6 @@ const PokemonBigDetail = props => {
   const id = parseInt(routerProps.match.params.charId);
   let obj = pokemons.find(element => element.id === id);
 
-
   // let objEvol = {}
   // if (pokemonsEvo.find(element => element.name === obj.name)) {
   //   objEvol = pokemonsEvo.find(element => element.name === obj.name);
@@ -69,47 +68,54 @@ const PokemonBigDetail = props => {
         <header className = " app__header">
           <h1 className = "app__title">Pokedesk</h1>
         </header>
-        <Link to='/'><p className="link__anchor"></p></Link>
-        <div className="detail__wrapper">
-          <div className="info__group">
+        <Link to = '/'><p className = "link__anchor"></p></Link>
+        <div className = "detail__wrapper">
+          <div className = "info__group">
             <div className="bigImage__wrapper">
-              <img className="detail__img" src={obj.image} alt={obj.name} />
+              <img className="bigDetail__img" src={obj.image} alt={obj.name} />
             </div>
             <div className="basicInfo">
               <h2 className="poke__name">{obj.name}</h2>
-              <h3>Altura</h3>
+              <h3 className = "poke__subtitle">Altura</h3>
               <p>{obj.height}</p>
-              <h3>Experiencia</h3>
+              <h3 className = "poke__subtitle">Experiencia</h3>
               <p>{obj.exp}</p>
               <p className="id__number"> Id / {obj.id}</p>
-              <h3>Es un pokemon por defecto</h3>
+              <h3 className = "poke__subtitle">Es un pokemon por defecto</h3>
               <p>{obj.default === true ? 'si' : 'no'}</p>
             </div>
           </div>
-          <div className="moreImages__group">
-            <h3>Otras imágenes</h3>
-            <ul>
-              <li key ="default_images">
+          <div className = "moreImages__group">
+            <h3 className = "poke__subtitle">Otras imágenes</h3>
+            <ul className = "moreImages__list">
+              <li className = "moreImages__item" key ="default_images">
                 <p>Imagenes por defecto</p>
-                {images_default.map((item, index) =>{return <img key ={`${index}default`} src={item} alt={`${index}default`}/>})}
+                <div className="img__pair">
+                  {images_default.map((item, index) =>{return <img key ={`${index}default`} src={item} alt={`${index}default`}/>})}
+                </div>
               </li>
-              <li key = "shine_images">
+              <li className = "moreImages__item" key = "shine_images">
               <p>Imagenes con brillo</p>
+                <div className="img__pair">
                 {images_shine.map((item, index) =>{return <img key ={`${index}shine`}src={item} alt={`${index}shine`}/>})}
+                </div>
               </li>
-              <li key ="female_iamges">
+              <li  className = "moreImages__item" key ="female_iamges">
               <p>Imagenes de hembra</p>
+              <div className="img__pair">
                 {images_female.map((item, index) =>{return <img key ={`${index}female`} src={item} alt={`${index}female`}/>})}
+                </div>
               </li>
-              <li key = "female_shine_images">
+              <li className = "moreImages__item" key = "female_shine_images">
               <p>Imagenes de hembra con brillo</p>
-                {images_female_shine.map((item, index) =>{return <img key ={`${index}female_shine`}src={item} alt={`${index}female_shine`}/>})}
+              <div className="img__pair">
+                {images_female_shine.map((item, index) => {return <img key = {`${index}female_shine`}src={item} alt={`${index}female_shine`}/>})}
+                </div>
               </li>
             </ul>
           </div>
-
-          <div className ="Types__group">
-            <h3>Tipos</h3>
+          <div className = "types__group">
+            <h3 className = "poke__subtitle">Tipos</h3>
             <ul className="type__list">
               {obj.Types.map((type, index) => {
                 return (
@@ -120,14 +126,14 @@ const PokemonBigDetail = props => {
               })}
             </ul>
             </div>
-            <div className="evolution__group">
-            {/* <h3>Evolutions</h3>
-            <ul className="evo__list">
-              <li className="evo__text">{objEvol.name}</li>
-              <li className="evo__text">{objEvol.firstEv}</li>
-              <li className="evo__text">{objEvol.secondEv}</li>
-            </ul> */}
-          </div>
+          <div className = "evolution__group">
+          {/* <h3>Evolutions</h3>
+          <ul className="evo__list">
+            <li className="evo__text">{objEvol.name}</li>
+            <li className="evo__text">{objEvol.firstEv}</li>
+            <li className="evo__text">{objEvol.secondEv}</li>
+          </ul> */}
+        </div>
         </div>
       </React.Fragment>
     )

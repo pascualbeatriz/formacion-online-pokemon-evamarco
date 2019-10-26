@@ -88,7 +88,7 @@ class PokemonService {
   POKEMONS_TO_FETCH = 25;
   ENDPOINT = 'https://pokeapi.co/api/v2/pokemon/';
   ENDPOINT2 = 'https://pokeapi.co/api/v2/evolution-chain/';
-  LIMIT_TO_EVOLUTIONS = 250;
+  LIMIT_TO_EVOLUTIONS = 25;
 
   findAllPokemons(maxPokemons = this.POKEMONS_TO_FETCH) {
     return fetch(`${this.ENDPOINT}?limit=${maxPokemons}`)

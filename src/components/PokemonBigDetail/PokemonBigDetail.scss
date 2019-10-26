@@ -1,20 +1,25 @@
 
-$bright-green:  rgb(32, 135, 204);
-$semi-blue:rgba(252, 248, 26, 0.719);
+$blue:  rgb(32, 135, 204);
+$yellow:rgba(252, 248, 26, 0.719);
 $semi-white: rgba(229, 208, 253, 0.705);
 $black: black;
 $white: white; 
-$info-text-color: $bright-green;
+$info-text-color: $blue;
 $primary-font: 'Mansalva', cursive;
 
 .detail__wrapper{
-  // @include center; 
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .info__group{
   display: flex; 
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 20px;
+  width: 90%;
 }
 .bigImage__wrapper{
   margin: 0 auto; 
@@ -25,26 +30,54 @@ $primary-font: 'Mansalva', cursive;
   justify-content: center;
   align-items: center;
 }
-.detail__info{
-  width: 300px; 
-  background-color: $semi-blue; 
-  color: $bright-green; 
-  padding: 10px;
-  font-size: 16px; 
+.moreImages__group{
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  width: 90%;
 }
-
+.moreImages__list{
+  display: grid; 
+}
+.moreImages__item{
+  margin: 0 auto; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.img__pair{
+  margin: 0 auto; 
+}
+.types__group{
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  width: 90%;
+}
+.type__list{
+  padding-top: 20px;
+}
+.poke__subtitle{
+  font-size: 18px;
+}
 .link__anchor{
   text-decoration: none; 
-  color: $bright-green; 
+  color: $blue; 
   margin: 15px; 
   position: relative;
   width: 35px;
   height: 35px; 
   border-radius: 50%;
-  background-color: $semi-blue;
+  border: 2px solid $blue; 
+  background-color: $yellow;
   &:hover{
-    color: $semi-blue;  
-    background-color: $bright-green;
+    color: $yellow;  
+    background-color: $blue;
+    border: 2px solid $yellow; 
   }
   &::before{
     position: absolute; 
@@ -59,27 +92,21 @@ $primary-font: 'Mansalva', cursive;
 }
 
 @media (min-width: 768px) {
-  .detail__wrapper{
-    min-height: 80vh; 
-    flex-direction: row; 
-    .img{
-      border-radius: 0px; 
-      margin: 0;
-      width: 350px;
-      height: 350px;  
-    } 
-    .detail__info{
-      width: 350px;
-      height: 350px; 
-      background-color: $semi-blue; 
-      color: $bright-green; 
-      padding: 15px;
-      font-size: 18px; 
-    }
-    .detail__img{
-      height: 350px;
-      width: 350px;    
-    }
+  .info__group{ 
+    flex-direction: row;
+  }
+  .bigDetail__img{
+    height: 250px;
+  }
+  .basicInfo{
+    align-items: flex-start;
+  }
+  .poke__name{
+    font-size: 40px;
+  }
+  .moreImages__list{
+    grid-template-columns: 1fr 1fr;
+    margin-top: 20px; 
   }
   .link__anchor{
     margin: 20px; 
@@ -94,23 +121,27 @@ $primary-font: 'Mansalva', cursive;
   }
 }
 @media (min-width: 1024px) {
-  .detail__wrapper{ 
-    .img{
-      width: 400px;
-      height: 400px;  
-    } 
-    .detail__info{
-      width: 400px;
-      height: 400px; 
-      font-size: 20px; 
-    }
-    .detail__img{
-      height: 400px;
-      width: 400px;    
-    }
+
+  .moreImages__list{
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-top: 20px; 
   }
   .link__anchor{
     margin: 20px;
+  }
+  .moreImages__group{
+    align-items: flex-start;
+  }
+  .types__group{
+    align-items: flex-start;
+  }
+  .type__item{
+    width: 200px;
+    height: 200px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
 
