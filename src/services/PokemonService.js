@@ -1,9 +1,9 @@
 class PokemonService {
 
-  POKEMONS_TO_FETCH = 900;
+  POKEMONS_TO_FETCH = 500;
   ENDPOINT = 'https://pokeapi.co/api/v2/pokemon/';
   ENDPOINT2 = 'https://pokeapi.co/api/v2/evolution-chain/';
-  LIMIT_TO_EVOLUTIONS = 419;
+  LIMIT_TO_EVOLUTIONS = 250;
 
   findAllPokemons(maxPokemons = this.POKEMONS_TO_FETCH) {
     return fetch(`${this.ENDPOINT}?limit=${maxPokemons}`)
