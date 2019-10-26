@@ -25,7 +25,7 @@ const PokemonList = props => {
           .map((item, index) => {return(
             <li  key = {`${item.Pokeindex}${index}`} className = "poke__item" >
               <Link className = "pokeList__link" to = {`/character/${item.id}`}>
-                <PokemonDetail item = {item} pokemonsEvo = {pokemonsEvo}/>
+                <PokemonDetail pokemons = {pokemons} item = {item} pokemonsEvo = {pokemonsEvo}/>
               </Link>
             </li>
           )})}

@@ -104,6 +104,8 @@ $primary-font: 'Mansalva', cursive;
 }
 .type__list{
   padding-top: 20px;
+  display: flex; 
+  align-items: center; 
 }
 .type__text{
   margin: 0 auto; 

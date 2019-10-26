@@ -27,23 +27,8 @@ class App extends React.Component {
   componentDidMount(){
     this.getPokemons();
     this.getEvolutions();
-    // this.getInitialState();
   }
 
-  getInitialState() {
-    // const inputValueSaved =  JSON.parse(localStorage.getItem('inputValue'));
-    // const pokemonsSaved =  JSON.parse(localStorage.getItem('pokemons'));
-    // const pokemonsEvoSaved =  JSON.parse(localStorage.getItem('pokemonsEvo'));
-    // if(inputValueSaved !== ''){
-    //   this.setState({InputNameValue: inputValueSaved})
-    // }
-    // if(pokemonsSaved !== []){
-    //   this.setState({pokemons: pokemonsSaved})
-    // }
-    // if(pokemonsEvoSaved !== []){
-    //   this.setState({pokemonsEvo: pokemonsEvoSaved})
-    // }
-  }
   prevPage(){
     const preInit = this.state.init;
     if(this.state.listPage > 1){
@@ -88,7 +73,7 @@ class App extends React.Component {
     else{
       localStorage.setItem('inputValue', JSON.stringify(inputValue));
     }
-    this.setState({InputNameValue: inputValue})
+    this.setState({InputNameValue: inputValue, listPage: 1, init:0, end: 25})
   }
   getPokemons(){
     this.pokemonService.findAllPokemons()

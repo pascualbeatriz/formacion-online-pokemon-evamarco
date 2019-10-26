@@ -15,14 +15,13 @@ const PokemonBigDetail = props => {
     if (pokemonsEvo.find(element => element.name === obj.name)) {
       objEvol = pokemonsEvo.find(element => element.name === obj.name);
       originName = pokemons.find(element => element.name === objEvol.name);
-      firstEvolution = pokemons.find(element => element.name === objEvol.firstEv);
       if (pokemons.find(element => element.name === objEvol.firstEv)) {
         firstEvolution = pokemons.find(element => element.name === objEvol.firstEv);
       }
-      else {
+      else{
         firstEvolution = { name: '', image: '' };
       }
-      if (pokemons.find(element => element.name === objEvol.secondEv)) {
+      if(pokemons.find(element => element.name === objEvol.secondEv)) {
         secondEvolution = pokemons.find(element => element.name === objEvol.secondEv);
       }
       else {
@@ -32,7 +31,7 @@ const PokemonBigDetail = props => {
     else if (pokemonsEvo.find(element => element.firstEv === obj.name)) {
       objEvol = pokemonsEvo.find(element => element.firstEv === obj.name);
       originName = pokemons.find(element => element.name === objEvol.name);
-
+      firstEvolution = pokemons.find(element => element.name === objEvol.firstEv);
       if (pokemons.find(element => element.name === objEvol.secondEv)) {
         secondEvolution = pokemons.find(element => element.name === objEvol.secondEv);
       }
@@ -91,7 +90,6 @@ const PokemonBigDetail = props => {
           <h1 className="app__title">Pokedesk</h1>
         </header>
         <Link to='/'><p className="link__anchor"></p></Link>
-
         <div className="detail__wrapper">
           <div className="info__group">
             <div className="bigImage__wrapper">
