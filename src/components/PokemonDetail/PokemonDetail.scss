@@ -1,0 +1,77 @@
+.card{
+  height: 250px;
+  width: 220px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  background-color: #ecebeb;
+  border: 1px solid rgb(112, 112, 112);
+  border-radius: 2px;
+}
+.image__wrapper{
+  width: 100%; 
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card__image{
+  object-fit: cover;
+  height: 100%;
+}
+.card__info{
+  background-color: white;
+  display: flex; 
+  justify-content: space-around;  
+  flex-direction: column; 
+  width: 100%;
+  height: 100px;
+  padding: 10px; 
+  position: relative;
+}
+.poke__name{
+  text-transform: capitalize; 
+  font-weight: normal; 
+}
+.type__list{
+  display: flex; 
+  align-items: center; 
+  border-radius: 2px;
+}
+.type__item{
+  text-transform: uppercase; 
+  border: 1px solid rgb(112, 112, 112);
+  border-radius: 3px; 
+  padding: 3px; 
+  margin-right:  15px; 
+  font-size: 13px; 
+}
+.id__number{
+  font-size: 12px; 
+  text-transform: uppercase; 
+  position: absolute; 
+  top: -25px; 
+  left: 0px; 
+  padding: 5px;
+  background-color: rgb(161, 161, 161);
+}
+.evo__list{
+  padding: 5px 0; 
+  list-style: none;
+  display: flex; 
+  justify-content: space-between;
+  font-size: 12px;
+}
+.evo__text{
+  padding: 3px;
+}
+.same__name{
+  border: 1px solid pink;
+  border-radius: 5px;
+  background-color: pink;
+}
+// h3{
+//   padding-top: 5px; 
+//   font-size: 15px;
+// }

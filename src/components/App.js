@@ -36,12 +36,12 @@ class App extends React.Component {
     .catch(err => console.log('Error message:', err.statusText))
 
   } 
-  // getEvolutions(){
-  //  const pokemonEvolutions = FetchEvolutions()
-  //  this.setState( { 
-  //   pokemonEvolutions: pokemonEvolutions
-  // })
-  // }
+  getEvolutions(){
+   const pokemonEvolutions = FetchEvolutions()
+   this.setState( { 
+    pokemonEvolutions: pokemonEvolutions
+  })
+  }
   render() {
     const {pokemons, InputNameSearch} = this.state;
     const {getInputValue} = this

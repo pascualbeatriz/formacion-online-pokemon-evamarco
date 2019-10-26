@@ -1,0 +1,16 @@
+.poke__list{
+  display: grid;
+  grid-gap: 15px; 
+  grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+}
+.poke__item{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+} 
+.pokeList__link{
+  text-decoration: none;
+  color: black; 
+}
